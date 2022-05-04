@@ -14,8 +14,7 @@ class User {
         return this.latestId
     }
     connect(password){
-        if(this.status === "enable"){
-
+        if(this.accountIsEnable()){
             if(password === this.password){
                 //Connecte
             }

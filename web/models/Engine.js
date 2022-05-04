@@ -4,7 +4,6 @@ const TemperatureController = require("../controllers/TemperatureController.js")
 class Engine {
     constructor(nom) {
         this.id = Engine.incrementId();
-        this.socket = null;
         this.nom = nom;
         this.temperature = 0;
         this.status = "off"

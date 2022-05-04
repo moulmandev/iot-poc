@@ -19,7 +19,7 @@ server.listen(PORT, () => {
 
 io.on("connection", socket => {
     socket.on(Events.AUTHENTICATE, ({ username, password }, callback) => new UsersController(callback, io).authenticate(username, password, socket));
-    
+    socket.on(Events.GET_USERS, ({token}, callback) => new UsersController(callback, io, token).getUsers());
     socket.on(Events.GET_USERS, ({token}, callback) => new UsersController(callback, io, token).getUsers());
 
     socket.on(Events.DISCONNECT, (reason) => new UsersController(null, io).disconnect());

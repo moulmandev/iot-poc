@@ -13,12 +13,22 @@ server.listen(PORT, () => {
 });
 
 //Routes
-const addEngine = require("./routes/addEngine");
+const setEngine = require("./routes/setEngine");
 const getEngine = require("./routes/getEngine");
-const addUser = require("./routes/addUser");
-const getUser = require("./routes/getUser");
 
-app.use(Events.ADD_ENGINE,addEngine);
-app.use(Events.GET_ENGINE,getEngine);
-app.use(Events.ADD_USER,addUser);
-app.use(Events.GET_USERS,getUser);
+const setAmbianteTemperature = require("./routes/setAmbianteTemperature");
+const getAmbianteTemperature = require("./routes/getAmbianteTemperature");
+const getRegleVoulu = require("./routes/getRegleVoulu");
+const getTime = require("./routes/getTime");
+const setTime = require("./routes/setTime");
+
+
+app.get(Events.SET_ENGINE,setEngine);
+app.get(Events.GET_ENGINE,getEngine);
+app.get(Events.SET_AMBIANTE_TEMPERATURE,setAmbianteTemperature);
+app.get(Events.GET_CHAUFFAGE_TEMPERATURE,getAmbianteTemperature);
+app.get(Events.GET_REGLE_VOULU,getRegleVoulu);
+app.get(Events.GET_TIME,getTime);
+app.get(Events.SET_TIME,setTime);
+
+

@@ -1,8 +1,9 @@
 module.exports = {
     //FRONT
     GET_ENGINE: "/getEngine", // Front call api to get all engines from database
-    ADD_ENGINE: "/addEngine", // Front call api to add new arduino with MAC ADDRESS to database
-
+    SET_ENGINE: "/addEngine", // Front call api to add new arduino with MAC ADDRESS to database
+    SET_TIME : "/setTime/:adresseMac/:time", // Front call api to add new time with MAC ADDRESS to database
+    //TODO SET REGLE
     
     //ARDUINO
     // All calls must contain arduino MAC ADRESS to identify him

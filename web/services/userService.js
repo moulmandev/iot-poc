@@ -30,9 +30,6 @@ class UserService {
             }
           );
     }
-    saveInDataBase(){
-        this.userExist();
-    }
     
 }
 

@@ -2,6 +2,7 @@
 // and change defaults values for security
 
 module.exports = {
+	port: 8787,
     database: {
         host: "exemple.com",
         user: "root",

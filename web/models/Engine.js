@@ -1,17 +1,29 @@
 const config = require("../config.js");
-const TemperatureController = require("../controllers/TemperatureController.js");
 
 class Engine {
-    constructor(nom) {
-        this.id = Engine.incrementId();
-        this.nom = nom;
+    constructor(adresseMac) {
+        this.adresseMac = adresseMac;
+        this.nom = "";
         this.temperature = 0;
-        this.status = "off"
+        this.status = "off";
+        this.localTime = null;
     }
     static incrementId() {
         if (!this.latestId) this.latestId = 1
         else this.latestId++
         return this.latestId
+    }
+    setTemperature(temperature){
+        this.temperature = temperature;
+    }
+    getTemperature(){
+        return this.temperature;
+    }
+    setLocalTime(localTime){
+        this.localTime = localTime;
+    }
+    getLocalTime(){
+        return this.localTime;
     }
     ajustTemperature(temperature, BDD){
         this.temperature = temperature;
@@ -40,4 +52,4 @@ class Engine {
 
 }
 
-module.exports = UsersController;
+module.exports = Engine;

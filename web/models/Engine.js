@@ -40,4 +40,4 @@ class Engine {
 
 }
 
-module.exports = UsersController;
+module.exports = Engine;

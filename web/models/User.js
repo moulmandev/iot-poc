@@ -3,7 +3,6 @@ const config = require("../config.js");
 class User {
     constructor(email,password) {
         this.id = User.incrementId();
-        this.socket = null;
         this.email = email;
         this.password = password;
         this.status = "enable";
@@ -33,3 +32,5 @@ class User {
         return false;
     }
 }
+
+module.exports = User;

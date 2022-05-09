@@ -7,11 +7,8 @@ const server = http.createServer(app);
 const config = require("./config.js");
 const Events = require("./utils/events.js");
 
-
-
-const PORT = 8080;
-server.listen(PORT, () => {
-    console.log("[Express] Server is listening port " + PORT);
+server.listen(config.port, () => {
+    console.log("[Express] Server is listening port " + config.port);
 });
 
 //Routes

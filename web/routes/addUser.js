@@ -4,4 +4,4 @@ function addUser(req, res) {
 
 
 
-export default addUser;
+module.exports = addUser;

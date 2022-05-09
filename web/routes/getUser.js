@@ -4,4 +4,4 @@ function getUser(req, res) {
 
 
 
-export default getUser;
+module.exports = getUser;

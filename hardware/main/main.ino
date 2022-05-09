@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#include <HTTPClient.h>
 #include "DHT.h"
 #include <WiFi.h>
 #include <WiFiMulti.h>
@@ -7,6 +9,11 @@
 
 WiFiMulti WiFiMulti;
 DHT dht(DHTPIN, DHTTYPE);   //   DHT11 DHT21 DHT22
+
+byte mac[] = {0};
+String host = "http://arduino.moulmandev.fr";
+String adresseMac = "";
+
 
 int led = 26;                // the pin that the LED is atteched to
 int sensor = 34;              // the pin that the sensor is atteched to
@@ -33,6 +40,21 @@ void setup() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+
+  WiFi.macAddress(mac);
+ 
+  String result = "";
+  String hexstring = "";
+
+  for(int i = 0; i < 6; i++) {
+    if(mac[i] < 0x10) {
+      hexstring += '0';
+    }
+
+    hexstring += String(mac[i], HEX);
+  }
+  adresseMac = HexString2ASCIIString(hexstring);
+  
 
   delay(500);
   
@@ -71,4 +93,42 @@ void loop(){
         state = LOW;       // update variable state to LOW
     }
   }
+
+    
+
+    delay(5000);
+}
+
+String HexString2ASCIIString(String hexstring) {
+  String temp = "", sub = "", result;
+  char buf[3];
+  for(int i = 0; i < hexstring.length(); i += 2){
+    sub = hexstring.substring(i, i+2);
+    sub.toCharArray(buf, 3);
+    char b = (char)strtol(buf, 0, 16);
+    if(b == '\0')
+      break;
+    temp += b;
+  }
+  return temp;
+}
+
+void sendTemp() {
+  if((WiFiMulti.run() == WL_CONNECTED)) {
+    HTTPClient http;
+    http.begin((String) host + "/setAmbianteTemperature?adresseMac=" + adresseMac);
+    int httpCode = http.GET();
+    
+    if(httpCode > 0) {
+      Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+      if(httpCode == HTTP_CODE_OK) {
+          String payload = http.getString();
+          Serial.println(payload);
+      }
+    } else {
+      Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    }
+    
+    http.end();
+    }
 }

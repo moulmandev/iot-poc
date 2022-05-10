@@ -12,5 +12,4 @@ function setAmbianteTemperature(req, res) {
 };
 
 
-
 module.exports = setAmbianteTemperature;

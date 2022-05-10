@@ -1,7 +1,13 @@
-function getRegleVoulu(req, res) {
-    const keyName=req.query.addengine
+const Engine = require("../models/Engine");
+const EngineService = require("../services/EngineService");
+
+function getTime(req, res) {
+    const adresseMac = req.params.adresseMac;
+    const enginInstance = EngineService.engineExist(adresseMac);
+ 
+    res.JSON(JSON.stringify(enginInstance.getLocalTime()));
 };
 
 
 
-module.exports = getRegleVoulu;
+module.exports = getTime;

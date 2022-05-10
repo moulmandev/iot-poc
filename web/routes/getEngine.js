@@ -1,11 +1,22 @@
+const Engine = require("../models/Engine");
+const EngineService = require("../services/EngineService");
+
 function getEngine(req, res) {
-    const keyName=req.query.adresseMac;
+    const adresseMac = req.params.adresseMac;
+    console.log("req.params.adresseMac: ",adresseMac);
 
-    let macAdresse = JSON.parse(keyName);
-    macAdresse = macAdresse.adressemac;
+    let asyncNewG = new Promise(async (resolve, reject) => {
+        resolve(EngineService.getEngine(adresseMac));
+    });
 
-    const enginInstance = EngineService.engineExist(macAdresse);
-    res.JSON(JSON.stringify(enginInstance));
+    let result;
+    asyncNewG.then(function(result) {
+        console.log("resultat dans la promise: ",result)
+        res.send(JSON.stringify(result));
+    });
+
+
+    
 };
 
 module.exports = getEngine;

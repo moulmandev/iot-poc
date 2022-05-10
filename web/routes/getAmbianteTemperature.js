@@ -1,10 +1,10 @@
+const Engine = require("../models/Engine");
+const EngineService = require("../services/EngineService");
+
 function getAmbianteTemperature(req, res) {
-    const keyName=req.query.adresseMac;
-
-    let macAdresse = JSON.parse(keyName);
-    macAdresse = macAdresse.adressemac;
-
-    const enginInstance = EngineService.engineExist(macAdresse);
+    const adresseMac = req.params.adresseMac;
+    const enginInstance = EngineService.engineExist(adresseMac);
+    
     res.JSON(JSON.stringify(enginInstance.temperature));
 };
 

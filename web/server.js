@@ -31,6 +31,8 @@ const setRegleNom = require("./routes/setRegleNom");
 const setRegleStart = require("./routes/setRegleStart");
 const setRegleTemperature = require("./routes/setRegleTemperature");
 
+const deleteRegle = require("./routes/deleteRegle");
+const deleteEngine = require("./routes/deleteEngine");
 
 app.get(Events.SET_ENGINE,setEngine);
 app.get(Events.GET_ENGINE,getEngine);
@@ -51,3 +53,6 @@ app.get(Events.SET_REGLE_END,setRegleEnd);
 app.get(Events.SET_REGLE_NOM,setRegleNom);
 app.get(Events.SET_REGLE_START,setRegleStart);
 app.get(Events.SET_REGLE_TEMPERATURE,setRegleTemperature);
+
+app.get(Events.DELETE_REGLE,deleteRegle);
+app.get(Events.DELETE_ENGINE,deleteEngine);

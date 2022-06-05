@@ -7,12 +7,16 @@ module.exports = {
     SET_TIME : "/setTime/:adresseMac/:time", // Front call api to add new time with MAC ADDRESS to database
     SET_STATUS : "/setStatus/:adresseMac/:status", // Front call api to add new time with MAC ADDRESS to database
 
+    DELETE_ENGINE : "/deleteEngine/:adresseMac", // Front call api to add new time with MAC ADDRESS to database
+
     //Regle
     SET_REGLE : "/setRegle/:adresseMac/:idRegle", // Front call api to add new time with MAC ADDRESS to database
     SET_REGLE_NOM : "/setRegleNom/:adresseMac/:idRegle/:nom", // Front call api to add new time with MAC ADDRESS to database
     SET_REGLE_START : "/setRegleStart/:adresseMac/:idRegle/:start", // Front call api to add new time with MAC ADDRESS to database
     SET_REGLE_END : "/setRegleEnd/:adresseMac/:idRegle/:end", // Front call api to add new time with MAC ADDRESS to database
     SET_REGLE_TEMPERATURE : "/setRegleTemperature/:adresseMac/:idRegle/:temperature", // Front call api to add new time with MAC ADDRESS to database
+
+    DELETE_REGLE: "/deleteRegle/:idRegle",
     //getRegle in arduino
 
 

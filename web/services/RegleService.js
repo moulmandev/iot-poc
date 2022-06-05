@@ -12,6 +12,14 @@ class RegleService {
         } catch (error) {return {code: 400,error: error.sqlMessage}}
       }
     
+      async delete(RegleParam){
+        const MYSQLpromise = MYSQL.promise();
+        try {
+          const result = await MYSQLpromise.execute('DELETE FROM regle WHERE id = ?', [RegleParam.id]);  
+        return { code: 200 }
+        } catch (error) {return {code: 400,error: error.sqlMessage}}
+      }
+
       async saveNom(RegleParam){
         const MYSQLpromise = MYSQL.promise();
         try {

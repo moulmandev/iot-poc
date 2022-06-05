@@ -34,6 +34,14 @@ class EngineService {
       } catch (error) {return {code: 400,error: error.sqlMessage}}
     }
 
+    async delete(Engine){
+      const MYSQLpromise = MYSQL.promise();
+      try {
+        const result = await MYSQLpromise.execute('DELETE FROM engine WHERE adresseMac = ?', [Engine.adresseMac]);  
+      return { code: 200 }
+      } catch (error) {return {code: 400,error: error.sqlMessage}}
+    }
+
     async saveTemperature(EngineParam){
       const MYSQLpromise = MYSQL.promise();
       console.log(EngineParam.temperature);

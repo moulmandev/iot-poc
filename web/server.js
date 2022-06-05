@@ -23,6 +23,8 @@ const getRegleVoulu = require("./routes/getRegleVoulu");
 const getTime = require("./routes/getTime");
 const setTime = require("./routes/setTime");
 
+const setStatus = require("./routes/setStatus");
+
 
 app.get(Events.SET_ENGINE,setEngine);
 app.get(Events.GET_ENGINE,getEngine);
@@ -36,4 +38,4 @@ app.get(Events.GET_REGLE_VOULU,getRegleVoulu);
 app.get(Events.GET_TIME,getTime);
 app.get(Events.SET_TIME,setTime);
 
-
+app.get(Events.SET_STATUS,setStatus);

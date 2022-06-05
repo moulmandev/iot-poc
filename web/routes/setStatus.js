@@ -1,19 +1,19 @@
 const Engine = require("../models/engine");
 const EngineService = require("../services/EngineService");
 
-async function setTime(req, res) {
+async function setStatus(req, res) {
     const adresseMac = req.params.adresseMac;
-    const time = req.params.time;
+    const status = req.params.status;
     console.log(adresseMac);
-    console.log(time);
+    console.log(status);
 
 
     const engine = new Engine(adresseMac);
-    engine.localTime = time;
+    engine.status = status;
 
-    const result = await EngineService.saveLocalTime(engine);
+    const result = await EngineService.saveStatus(engine);
     res.send(JSON.stringify(result));
 };
 
 
-module.exports = setTime;
+module.exports = setStatus;

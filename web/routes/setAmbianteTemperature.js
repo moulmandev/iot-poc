@@ -1,14 +1,18 @@
 const Engine = require("../models/engine");
 const EngineService = require("../services/EngineService");
 
-function setAmbianteTemperature(req, res) {
+async function setAmbianteTemperature(req, res) {
     const adresseMac = req.params.adresseMac;
     const temperature = req.params.temperature;
+    console.log(adresseMac);
+    console.log(temperature);
+
 
     const engine = new Engine(adresseMac);
     engine.setTemperature(temperature);
 
-    EngineService.saveTemperature(engine);
+    const result = await EngineService.saveTemperature(engine);
+    res.send(JSON.stringify(result));
 };
 
 

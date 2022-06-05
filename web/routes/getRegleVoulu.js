@@ -7,8 +7,8 @@ function getRegleVoulu(req, res) {
     const adresseMac = req.params.adresseMac;
 
     //DISPLAY toutes les regle qui sont associé a l adresse mac
-    const enginInstance = EngineService.engineExist(macAdresse);
-    let regle = EngineService.ReglesLinked(enginInstance);
+    const enginInstance = EngineService.getEngine(adresseMac);
+    const regle = EngineService.ReglesLinked(enginInstance);
     res.JSON(JSON.stringify(regle));
 };
 

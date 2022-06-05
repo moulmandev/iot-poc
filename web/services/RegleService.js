@@ -7,7 +7,7 @@ class RegleService {
         console.log(RegleParam);
         const MYSQLpromise = MYSQL.promise();
         try {
-          const result = await MYSQLpromise.execute('INSERT INTO regle (id,idEngine) VALUES (?,?)', [RegleParam.id,RegleParam.idEngine]);  
+          const result = await MYSQLpromise.execute('INSERT INTO regle (id,idEngine) VALUES (?)', [RegleParam.id,RegleParam.idEngine]);  
         return { code: 200 }
         } catch (error) {return {code: 400,error: error.sqlMessage}}
       }

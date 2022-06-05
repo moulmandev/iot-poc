@@ -25,6 +25,12 @@ const setTime = require("./routes/setTime");
 
 const setStatus = require("./routes/setStatus");
 
+const setRegleEnd = require("./routes/setRegleEnd");
+
+const setRegleNom = require("./routes/setRegleNom");
+const setRegleStart = require("./routes/setRegleStart");
+const setRegleTemperature = require("./routes/setRegleTemperature");
+
 
 app.get(Events.SET_ENGINE,setEngine);
 app.get(Events.GET_ENGINE,getEngine);
@@ -39,3 +45,9 @@ app.get(Events.GET_TIME,getTime);
 app.get(Events.SET_TIME,setTime);
 
 app.get(Events.SET_STATUS,setStatus);
+
+app.get(Events.SET_REGLE_END,setRegleEnd);
+
+app.get(Events.SET_REGLE_NOM,setRegleNom);
+app.get(Events.SET_REGLE_START,setRegleStart);
+app.get(Events.SET_REGLE_TEMPERATURE,setRegleTemperature);

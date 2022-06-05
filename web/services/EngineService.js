@@ -20,7 +20,7 @@ class EngineService {
       const MYSQLpromise = MYSQL.promise();
       try {
         const [rows, fields] = await MYSQLpromise.execute('SELECT * FROM `engine` WHERE `adresseMac` = ?',[adresseMac]);
-      return rows;
+        return rows;
       } catch (error) {return {code: 400,error: error.sqlMessage}}
 
       
@@ -70,11 +70,11 @@ class EngineService {
     }
 
     //TODO Recuperer toutes les règle lié a l'engins
-    async ReglesLinked(RegleParam){
+    async ReglesLinked(EngineParam){
       const MYSQLpromise = MYSQL.promise();
       try {
-        const result = await MYSQLpromise.execute('SELECT * FROM engine INNER JOIN regle WHERE engine.adresseMac = ?', [RegleParam.id]);  
-        return { code: 200 }
+        const result = await MYSQLpromise.execute('SELECT * FROM regle WHERE regle.idEngine = ?', [EngineParam.adresseMac]);  
+        return result[0];
       } catch (error) {return {code: 400,error: error.sqlMessage}}
     }
   }

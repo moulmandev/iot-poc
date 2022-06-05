@@ -3,13 +3,13 @@ const RegleService = require("../services/RegleService");
 const Engine = require("../models/Engine");
 const EngineService = require("../services/EngineService");
 
-function getRegleVoulu(req, res) {
+async function getRegleVoulu(req, res) {
     const adresseMac = req.params.adresseMac;
 
     //DISPLAY toutes les regle qui sont associé a l adresse mac
-    const enginInstance = EngineService.getEngine(adresseMac);
-    const regle = EngineService.ReglesLinked(enginInstance);
-    res.JSON(JSON.stringify(regle));
+    const enginInstance = new Engine(adresseMac);
+    const regle =await EngineService.ReglesLinked(enginInstance);
+    res.send(JSON.stringify(regle));
 };
 
 

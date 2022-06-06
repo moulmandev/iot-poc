@@ -13,6 +13,8 @@ server.listen(PORT, () => {
 });
 
 //Routes
+const getEngines = require("./routes/getEngines");
+
 const setEngine = require("./routes/setEngine");
 const getEngine = require("./routes/getEngine");
 
@@ -33,6 +35,8 @@ const setRegleTemperature = require("./routes/setRegleTemperature");
 
 const deleteRegle = require("./routes/deleteRegle");
 const deleteEngine = require("./routes/deleteEngine");
+
+app.get(Events.GET_ENGINES,getEngines);
 
 app.get(Events.SET_ENGINE,setEngine);
 app.get(Events.GET_ENGINE,getEngine);

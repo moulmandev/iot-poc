@@ -2,6 +2,7 @@ module.exports = {
     //FRONT
     
     //ENGINE
+    GET_ENGINES: "/getEngines",
     GET_ENGINE: "/getEngine/:adresseMac", // Front call api to get all engines from database
     SET_ENGINE: "/setEngine/:adresseMac", // Front call api to add new arduino with MAC ADDRESS to database
     SET_TIME : "/setTime/:adresseMac/:time", // Front call api to add new time with MAC ADDRESS to database

@@ -26,6 +26,15 @@ class EngineService {
       
     }
 
+    async getEngines(){
+      const MYSQLpromise = MYSQL.promise();
+      try {
+        const [rows, fields] = await MYSQLpromise.execute('SELECT * FROM engine');
+        return rows;
+      } catch (error) {return {code: 400,error: error.sqlMessage}}
+
+      
+    }
     async create(Engine){
       const MYSQLpromise = MYSQL.promise();
       try {
